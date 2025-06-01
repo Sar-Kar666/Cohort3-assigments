@@ -9,12 +9,27 @@
             const username=document.getElementById("signup-username").value;
             const password=document.getElementById("signup-password").value;
 
-           await axios.post("http://localhost:300/signup",{
+           await axios.post("http://localhost:3000/signup",{
                 username:username,
                 password:password
             });
 
-            alers("you are signed in");
+            alert("you are signed in");
+
+        }
+
+         async  function signin(){
+            const username=document.getElementById("signin-username").value;
+            const password=document.getElementById("signin-password").value;
+
+           const response=await axios.post("http://localhost:3000/signin",{
+                username:username,
+                password:password
+            });
+
+            localStorage.setItem("token",response.data.token);
+
+            alert("you are signed in");
 
         }
     </script>
@@ -28,8 +43,8 @@
 
          <div>
             Signin
-            <input type="text" name="Username" placeholder="Username">
-            <input type="text" name="password" placeholder="password">
+            <input id="signin-username" type="text" name="Username" placeholder="Username">
+            <input id="signin-username"  type="text" name="password" placeholder="password">
             <button onclick="signin()">Submit</button>
         </div>
 
