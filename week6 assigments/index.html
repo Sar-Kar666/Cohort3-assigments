@@ -16,6 +16,8 @@
 
             alert("you are signed in");
 
+            document.getElementById("1stsign").remove();
+            
         }
 
      async  function signin(){
@@ -28,6 +30,8 @@
             }); 
             localStorage.setItem("token",response.data.token);
             alert("you are signed in");
+            getUserInformation();
+              document.getElementById("2stsign").remove();
         }
 
     
@@ -41,17 +45,20 @@
     document.getElementById("information").innerHTML="usename: "+ response.data.username + "  password: "+ response.data.password
     }
 
-    getUserInformation();
+    function logout(){
+        localStorage.removeItem("token");
+        location.reload();
+    }
     </script>
     <body>
-        <div>
+        <div id="1stsign">
             Signup
             <input id="signup-username" type="text" name="Username" placeholder="Username">
             <input id="signup-password" type="password" name="password" placeholder="password">
             <button onclick="signup()">Submit</button>
         </div>
 
-         <div>
+         <div id="2stsign">
             Signin
             <input id="signin-username" type="text" name="Username" placeholder="Username">
             <input id="signin-password"  type="password" name="password" placeholder="password">
@@ -64,7 +71,7 @@
 
         </div>
 
-        <div>
+        <div id="loged">
             <button onclick="logout()">logout</button>
         </div>
     </body>
