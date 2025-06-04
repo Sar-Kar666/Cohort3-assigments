@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Todo app</title>
+
+        <script >
+
+    let task=[];
+    let newTask=[];
+    function AddTodo(){
+        task.push({
+            title: document.querySelector("input").value
+        })
+        render()
+    }
+
+    function render(){
+        let no= task.length-1;
+        const kaj= task[task.length-1];
+        const div=document.createElement("div");
+        const h2=document.createElement("h2");
+        const button=document.createElement("button");
+        const edit=document.createElement("button");
+        edit.innerHTML="Edit";
+        button.innerHTML="Delete";
+        h2.innerHTML=kaj.title;
+        div.append(h2);
+        div.append(button);
+        div.append(edit);
+        edit.id="ed"+no;   
+        div.id="div"+no;
+        button.id=no;
+        document.querySelector("body").appendChild(div);
+        button.onclick=function(){
+           let ele=document.getElementById(div.id)
+           document.querySelector("body").removeChild(ele); 
+        };
+
+
+        edit.onclick=function(){
+                        
+                        
+                        const box=document.createElement("input");
+                        const done=document.createElement("button");
+                        const line=document.createElement("h2");
+                        box.id="box"+no;
+                        div.append(box);        
+                        
+                        edit.innerHTML="Done";
+                                edit.onclick=function(){
+                                            newTask.push({
+                                                title: document.getElementById(box.id).value
+                                            });
+                                            const newKaj=newTask[newTask.length-1];
+                                            h2.innerHTML=newKaj.title;
+                                            edit.innerHTML="Edit";
+                                            document.getElementById(box.id).value='';
+                                            
+                                }
+                                
+
+                        
+                    }
+        
+    }
+
+
+    </script>
+    </head>
+
+    <body>
+        <div>
+            <input id="taskAdd" type="text" placeholder="add your task"></input>
+            <button onclick="AddTodo()">Add Todo</button>
+        </div>
+    </body>
+</html>
