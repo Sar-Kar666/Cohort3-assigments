@@ -36,32 +36,34 @@
         };
 
 
-        edit.onclick=function(){
-                        
-                        
-                        const box=document.createElement("input");
-                        const done=document.createElement("button");
-                        const line=document.createElement("h2");
-                        box.id="box"+no;
-                        div.append(box);        
-                        
-                        edit.innerHTML="Done";
-                                edit.onclick=function(){
-                                            newTask.push({
-                                                title: document.getElementById(box.id).value
-                                            });
-                                            const newKaj=newTask[newTask.length-1];
-                                            h2.innerHTML=newKaj.title;
-                                            edit.innerHTML="Edit";
-                                            document.getElementById(box.id).value='';
-                                            
-                                }
-                                
-
-                        
-                    }
+        edit.onclick=function(){  
+          edit.disabled=true;
+        const newDiv=document.createElement("div");             
+        const box=document.createElement("input");
+        const done = document.createElement("button");
+        done.innerHTML="Done";
+        box.id="box"+no;
+        newDiv.append(box);
+        newDiv.append(done);
+        document.getElementById(div.id).append(newDiv);
         
+        done.onclick=function(){
+        
+        newTask.push({
+        title: document.getElementById(box.id).value
+        });
+        const newKaj=newTask[newTask.length-1];
+        h2.innerHTML=newKaj.title;
+        edit.innerHTML="Edit";
+        document.getElementById(box.id).value='';
+        newDiv.remove(box);
+        edit.disabled=false;
+        }
+        }
+
     }
+
+
 
 
     </script>
