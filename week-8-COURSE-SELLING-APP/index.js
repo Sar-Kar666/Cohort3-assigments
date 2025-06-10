@@ -39,16 +39,14 @@ async function main() {
       // Log a success message to the console if the database connection is established
       console.log("Connected to the database");
 
-      // Start the server and listen for incoming requests on the specifies PORT
+  
       app.listen(3000, () => {
-        // Log a message to indicate that the server is running and listening for requests
         console.log("Server is running on port 3000");
       });
 } catch(e){
-    // Log an error message if the connection to the database fails
+
     console.error("Failed to connect to the database", e);
     }
 }
 
-// Call the main function to initialize the server and database connection
 main();
