@@ -1,39 +1,19 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
 
 function App() {
-  return (<div>
-    
-    <Display/>
-    </div>
+
+  const [currentTab,setCurrentTab]=useState("Home");
   
-)
-}
-function Display(){
- const [count,setCount]=useState(0);
-
-
- function increaseCounter(){
-  setCount(count+1);
-
-  }
-
-
-
-  function decreaseCounter(){
-  setCount(count-1);
-
-  }
-
-
-  return (
-  <div>
-   <h1>{count}</h1>
-  <button onClick={increaseCounter}>Increase count </button>
-  <button onClick={decreaseCounter}>Decrease count </button>
+  
+  return <div>
+    <button onClick={()=>setCurrentTab(c=>"Home")} style={{color: currentTab=="Home" ?"red" : "black" }}>Home</button>
+    <button onClick={()=>setCurrentTab(c=>"Notification")} style={{color: currentTab=="Notification" ?"red" : "black"}}>Notification</button>
+    <button onClick={()=>setCurrentTab(c=>"messages")} style={{color : currentTab=="messages" ?"red" : "black"}}>messages</button>
+    <button onClick={()=>setCurrentTab(c=>"jobs")} style={{color: currentTab=="jobs" ?"red":"black"}}>jobs</button>
   </div>
-  )
 }
+
 
 
 
