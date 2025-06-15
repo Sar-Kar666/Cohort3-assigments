@@ -1,34 +1,34 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-function useCounter(){
-  const [count,setCount]=useState(0);
+function usePrev(value){
+  const ref=useRef();
 
-  function increaseCount(){
-    setCount(c=>c+1)
-  }
+  useEffect(()=>{
+    ref.current=value;
+  },[value])
 
-  return{
-    count:count,
-    increaseCount: increaseCount
-  }
+  return ref.current;
 }
-
 function App() {
-  const {count,increaseCount}=useCounter();
-  return <div >
-    <Counter/>
-    <Counter/>
-    <Counter/>
-    <Counter/>
+  const [value,setValue]=useState(0);
+
+  const output=usePrev(value);
+
+
+  function increase(){
+    setValue(c=>c+1)
+  }
+
+  
+  return<div>
+    {value}
+    <br/>
+    <button onClick={increase}>Increase</button>
+    <div>The value is  {output}</div>
   </div>
 }
 
-function Counter(){
-  const {count,increaseCount}=useCounter();
-   return <div >
-    {count }<br/>
-    <button onClick={increaseCount}>Increase Count</button>
-  </div>
-}
+
+
 
 export default App
