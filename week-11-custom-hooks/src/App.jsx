@@ -16,6 +16,16 @@ function useCounter(){
 function App() {
   const {count,increaseCount}=useCounter();
   return <div >
+    <Counter/>
+    <Counter/>
+    <Counter/>
+    <Counter/>
+  </div>
+}
+
+function Counter(){
+  const {count,increaseCount}=useCounter();
+   return <div >
     {count }<br/>
     <button onClick={increaseCount}>Increase Count</button>
   </div>
