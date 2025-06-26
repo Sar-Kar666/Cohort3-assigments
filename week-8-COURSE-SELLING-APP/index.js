@@ -8,7 +8,7 @@ const {userRouter} = require("./routes/user");
 const {courseRouter} = require("./routes/course");
 const {adminRouter} = require("./routes/admin");
 
-// Initialize express application
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
